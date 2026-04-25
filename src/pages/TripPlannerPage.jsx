@@ -243,19 +243,77 @@ console.log("TIPS:", data.trip.travel_tips);
                     <TabsTrigger value="tips" className="rounded-full text-xs" data-testid="tab-tips">Tips</TabsTrigger>
                   </TabsList>
 
-                  <TabsContent value="itinerary">
-  <div
-    style={{
-      color: "white",
-      background: "#1e1e1e",
-      padding: "20px",
-      borderRadius: "12px",
-      whiteSpace: "pre-wrap",
-      marginTop: "10px"
-    }}
-  >
-    {trip?.itinerary || "No itinerary found"}
-  </div>
+                  <TabsContent value="itinerary" className="space-y-6">
+
+  {(trip?.itinerary || "")
+    .split("Day ")
+    .filter(Boolean)
+    .map((day, index) => (
+      <div
+        key={index}
+        className="
+          relative overflow-hidden
+          bg-white/10
+          backdrop-blur-xl
+          border border-white/20
+          rounded-3xl
+          p-6
+          shadow-2xl
+          hover:scale-[1.02]
+          transition-all duration-300
+        "
+      >
+
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+
+        <div className="relative z-10">
+
+          <div className="flex items-center justify-between mb-5">
+
+            <div className="flex items-center gap-3">
+
+              <div className="
+                w-12 h-12 rounded-full
+                bg-gradient-to-br from-emerald-400 to-cyan-400
+                flex items-center justify-center
+                text-black font-bold text-lg
+                shadow-lg
+              ">
+                {index + 1}
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-white">
+                  Day {index + 1}
+                </h3>
+
+                <p className="text-sm text-white/60">
+                  Travel Schedule
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="
+            whitespace-pre-wrap
+            text-sm
+            leading-8
+            text-white/80
+            bg-black/20
+            rounded-2xl
+            p-4
+            border border-white/10
+          ">
+            {day.substring(2)}
+          </div>
+
+        </div>
+
+      </div>
+    ))}
+
 </TabsContent>
 
                   <TabsContent value="budget">
