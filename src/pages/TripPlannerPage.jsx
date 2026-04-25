@@ -245,8 +245,8 @@ console.log("TIPS:", data.trip.travel_tips);
 
                   <TabsContent value="itinerary" className="space-y-4">
   <div className="bg-card rounded-2xl border border-border/50 p-4">
-    <pre className="whitespace-pre-wrap text-white">
-      {trip?.trip?.itinerary || "No itinerary available"}
+    <pre className="text-white whitespace-pre-wrap">
+      {JSON.stringify(trip, null, 2)}
     </pre>
   </div>
 </TabsContent>
