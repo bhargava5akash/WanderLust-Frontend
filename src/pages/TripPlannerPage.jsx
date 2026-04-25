@@ -253,11 +253,11 @@ console.log("TIPS:", data.trip.travel_tips);
     .map((day, index) => {
 
       const images = [
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2070&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
-      ];
+  `https://source.unsplash.com/1600x900/?${form.destination},travel`,
+  `https://source.unsplash.com/1600x900/?${form.destination},nature`,
+  `https://source.unsplash.com/1600x900/?${form.destination},tourism`,
+  `https://source.unsplash.com/1600x900/?${form.destination},landscape`,
+];
 
       return (
         <div
