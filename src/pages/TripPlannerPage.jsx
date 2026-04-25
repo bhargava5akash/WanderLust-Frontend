@@ -246,15 +246,17 @@ console.log("TIPS:", data.trip.travel_tips);
                   <TabsContent value="itinerary" className="space-y-6">
 
   {(trip?.itinerary || "")
+    .replace(/from\s+[A-Za-z\s]+/gi, "")
+    .replace(/Total estimated cost:[\s\S]*/gi, "")
     .split("Day ")
     .filter(Boolean)
     .map((day, index) => {
 
       const images = [
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-        "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
-        "https://images.unsplash.com/photo-1519046904884-53103b34b206",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2070&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
       ];
 
       return (
@@ -325,7 +327,12 @@ console.log("TIPS:", data.trip.travel_tips);
               whitespace-pre-wrap
               shadow-xl
             ">
-              {day.substring(2)}
+              {
+                day
+                  .substring(2)
+                  .replace(/from\s+[A-Za-z\s]+/gi, "")
+                  .replace(/Total estimated cost:[\s\S]*/gi, "")
+              }
             </div>
 
           </div>
