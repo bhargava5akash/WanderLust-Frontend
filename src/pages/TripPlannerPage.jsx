@@ -243,11 +243,18 @@ console.log("TIPS:", data.trip.travel_tips);
                     <TabsTrigger value="tips" className="rounded-full text-xs" data-testid="tab-tips">Tips</TabsTrigger>
                   </TabsList>
 
-                  <TabsContent value="itinerary" className="space-y-4">
-  <div className="bg-card rounded-2xl border border-border/50 p-4 text-white">
-    <pre className="whitespace-pre-wrap text-sm">
-      {JSON.stringify(trip, null, 2)}
-    </pre>
+                  <TabsContent value="itinerary">
+  <div
+    style={{
+      color: "white",
+      background: "#1e1e1e",
+      padding: "20px",
+      borderRadius: "12px",
+      whiteSpace: "pre-wrap",
+      marginTop: "10px"
+    }}
+  >
+    {trip?.itinerary || "No itinerary found"}
   </div>
 </TabsContent>
 
