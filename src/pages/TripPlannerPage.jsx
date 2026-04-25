@@ -253,10 +253,13 @@ console.log("TIPS:", data.trip.travel_tips);
     .map((day, index) => {
 
       const images = [
-  `https://source.unsplash.com/1600x900/?${form.destination},travel`,
-  `https://source.unsplash.com/1600x900/?${form.destination},nature`,
-  `https://source.unsplash.com/1600x900/?${form.destination},tourism`,
-  `https://source.unsplash.com/1600x900/?${form.destination},landscape`,
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+  
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
+  
+  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
+  
+  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1600&q=80",
 ];
 
       return (
@@ -271,15 +274,10 @@ console.log("TIPS:", data.trip.travel_tips);
         >
 
           <img
-            src={images[index % images.length]}
-            alt="travel"
-            className="
-              absolute inset-0 w-full h-full
-              object-cover
-              group-hover:scale-110
-              transition-transform duration-700
-            "
-          />
+  src={images[index % images.length]}
+  alt="travel"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
 
           <div className="absolute inset-0 bg-black/55" />
 
