@@ -76,7 +76,7 @@ console.log("TIPS:", data.trip.travel_tips);
     if (!trip) return;
     setSaving(true);
     try {
-      await api.post("/trips/save", {
+      await api.post("/api/trips/save", {
         trip_data: trip,
         destination: form.destination,
         duration: form.duration,
