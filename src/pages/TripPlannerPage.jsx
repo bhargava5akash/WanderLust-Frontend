@@ -263,14 +263,11 @@ console.log("TIPS:", data.trip.travel_tips);
 ];
 
       return (
-        <div
-          key={index}
-          className="
-            relative overflow-hidden rounded-3xl
-            min-h-[320px]
-            shadow-2xl
-            group
-          "
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.15 }}
         >
 
           <img
@@ -310,32 +307,79 @@ console.log("TIPS:", data.trip.travel_tips);
                 <p className="text-white/70 text-sm">
                   Adventure Schedule
                 </p>
+                <p className="text-white/80">
+  Adventure Schedule
+</p>
+
+<div className="flex gap-3 mt-3 flex-wrap">
+  <span className="bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm">
+    📍 {form.destination}
+  </span>
+
+  <span className="bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm">
+    🗓 Day {index + 1}
+  </span>
+
+  <span className="bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm">
+    ✨ AI Curated
+  </span>
+</div>
               </div>
 
             </div>
 
             <div className="
-              bg-white/10
-              border border-white/20
-              backdrop-blur-xl
-              rounded-2xl
-              p-6
-              text-white/90
-              leading-8
-              whitespace-pre-wrap
-              shadow-xl
-            ">
-              {
-                day
-                  .substring(2)
-                  .replace(/from\s+[A-Za-z\s]+/gi, "")
-                  .replace(/Total estimated cost:[\s\S]*/gi, "")
-              }
-            </div>
+  bg-white/10
+  border border-white/20
+  backdrop-blur-xl
+  rounded-2xl
+  p-6
+  text-white/90
+  shadow-xl
+">
+
+  <div className="space-y-4">
+
+    {day
+      .substring(2)
+      .replace(/from\s+[A-Za-z\s]+/gi, "")
+      .replace(/Total estimated cost:[\s\S]*/gi, "")
+      .split("\n")
+      .filter(line => line.trim() !== "")
+      .map((line, i) => (
+
+        <div
+          key={i}
+          className="
+            flex items-start gap-3
+            bg-white/5
+            rounded-2xl
+            p-4
+            border border-white/10
+          "
+        >
+
+          <div className="
+            mt-1 w-3 h-3 rounded-full
+            bg-cyan-400
+            shadow-lg
+          " />
+
+          <p className="text-white leading-7">
+            {line.replace(/^-/, "").trim()}
+          </p>
+
+        </div>
+      ))
+    }
+
+  </div>
+
+</div>
 
           </div>
 
-        </div>
+        </motion.div>
       );
     })}
 
