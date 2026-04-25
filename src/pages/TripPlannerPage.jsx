@@ -20,10 +20,10 @@ export default function TripPlannerPage() {
   const [searchParams] = useSearchParams();
   const [form, setForm] = useState({
     destination: searchParams.get("destination") || "",
-    budget: 30000,
-    duration: 5,
+    budget: "",
+    duration: "",
     travel_style: "balanced",
-    num_travelers: 2,
+    num_travelers: "",
     interests: [],
     travel_mode: "any",
   });
@@ -112,11 +112,11 @@ console.log("TIPS:", data.trip.travel_tips);
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label>Duration (days)</Label>
-                  <Input type="number" min={1} max={30} value={form.duration} onChange={e => setForm(f => ({ ...f, duration: parseInt(e.target.value) || 1 }))} className="rounded-xl mt-1.5" data-testid="planner-duration-input" />
+                  <Input type="number" min={1} max={30} value={form.duration ||""} onChange={e => setForm(f => ({ ...f, duration: parseInt(e.target.value) || 1 }))} className="rounded-xl mt-1.5" data-testid="planner-duration-input" />
                 </div>
                 <div>
                   <Label>Budget (₹)</Label>
-                  <Input type="number" min={1000} value={form.budget} onChange={e => setForm(f => ({ ...f, budget: parseInt(e.target.value) || 1000 }))} className="rounded-xl mt-1.5" data-testid="planner-budget-input" />
+                  <Input type="number" min={1000} value={form.budget ||""} onChange={e => setForm(f => ({ ...f, budget: parseInt(e.target.value) || 1000 }))} className="rounded-xl mt-1.5" data-testid="planner-budget-input" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -136,7 +136,7 @@ console.log("TIPS:", data.trip.travel_tips);
                 </div>
                 <div>
                   <Label>Travelers</Label>
-                  <Input type="number" min={1} max={20} value={form.num_travelers} onChange={e => setForm(f => ({ ...f, num_travelers: parseInt(e.target.value) || 1 }))} className="rounded-xl mt-1.5" data-testid="planner-travelers-input" />
+                  <Input type="number" min={1} max={20} value={form.num_travelers || ""} onChange={e => setForm(f => ({ ...f, num_travelers: parseInt(e.target.value) || 1 }))} className="rounded-xl mt-1.5" data-testid="planner-travelers-input" />
                 </div>
               </div>
               <div>
@@ -244,8 +244,10 @@ console.log("TIPS:", data.trip.travel_tips);
                   </TabsList>
 
                   <TabsContent value="itinerary" className="space-y-4">
-  <div className="bg-card rounded-2xl p-6 text-white whitespace-pre-wrap">
-    {trip?.itinerary}
+  <div className="bg-card rounded-2xl p-6 text-white">
+    <div className="whitespace-pre-line">
+      {trip?.itinerary}
+    </div>
   </div>
 </TabsContent>
 
