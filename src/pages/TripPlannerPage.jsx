@@ -248,71 +248,91 @@ console.log("TIPS:", data.trip.travel_tips);
   {(trip?.itinerary || "")
     .split("Day ")
     .filter(Boolean)
-    .map((day, index) => (
-      <div
-        key={index}
-        className="
-          relative overflow-hidden
-          bg-white/10
-          backdrop-blur-xl
-          border border-white/20
-          rounded-3xl
-          p-6
-          shadow-2xl
-          hover:scale-[1.02]
-          transition-all duration-300
-        "
-      >
+    .map((day, index) => {
 
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+      const images = [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206",
+      ];
 
-        <div className="relative z-10">
+      return (
+        <div
+          key={index}
+          className="
+            relative overflow-hidden rounded-3xl
+            min-h-[320px]
+            shadow-2xl
+            group
+          "
+        >
 
-          <div className="flex items-center justify-between mb-5">
+          <img
+            src={images[index % images.length]}
+            alt="travel"
+            className="
+              absolute inset-0 w-full h-full
+              object-cover
+              group-hover:scale-110
+              transition-transform duration-700
+            "
+          />
 
-            <div className="flex items-center gap-3">
+          <div className="absolute inset-0 bg-black/55" />
+
+          <div className="
+            absolute inset-0
+            backdrop-blur-[2px]
+            bg-white/5
+          " />
+
+          <div className="relative z-10 p-8 h-full flex flex-col">
+
+            <div className="flex items-center gap-4 mb-6">
 
               <div className="
-                w-12 h-12 rounded-full
-                bg-gradient-to-br from-emerald-400 to-cyan-400
+                w-14 h-14 rounded-full
+                bg-gradient-to-br
+                from-cyan-400 to-emerald-400
                 flex items-center justify-center
-                text-black font-bold text-lg
-                shadow-lg
+                text-black font-bold text-xl
+                shadow-xl
               ">
                 {index + 1}
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-white">
+                <h2 className="text-3xl font-bold text-white">
                   Day {index + 1}
-                </h3>
+                </h2>
 
-                <p className="text-sm text-white/60">
-                  Travel Schedule
+                <p className="text-white/70 text-sm">
+                  Adventure Schedule
                 </p>
               </div>
 
             </div>
 
-          </div>
+            <div className="
+              bg-white/10
+              border border-white/20
+              backdrop-blur-xl
+              rounded-2xl
+              p-6
+              text-white/90
+              leading-8
+              whitespace-pre-wrap
+              shadow-xl
+            ">
+              {day.substring(2)}
+            </div>
 
-          <div className="
-            whitespace-pre-wrap
-            text-sm
-            leading-8
-            text-white/80
-            bg-black/20
-            rounded-2xl
-            p-4
-            border border-white/10
-          ">
-            {day.substring(2)}
           </div>
 
         </div>
-
-      </div>
-    ))}
+      );
+    })}
 
 </TabsContent>
 
