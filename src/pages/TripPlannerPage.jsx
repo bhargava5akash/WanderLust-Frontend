@@ -246,7 +246,7 @@ console.log("TIPS:", data.trip.travel_tips);
                   <TabsContent value="itinerary" className="space-y-4">
   <div className="bg-card rounded-2xl border border-border/50 p-4 text-white">
     <pre className="whitespace-pre-wrap">
-      {trip && JSON.stringify(trip, null, 2)}
+      {trip?.itinerary}
     </pre>
   </div>
 </TabsContent>
