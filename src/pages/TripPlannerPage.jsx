@@ -244,10 +244,12 @@ console.log("TIPS:", data.trip.travel_tips);
                   </TabsList>
 
                   <TabsContent value="itinerary" className="space-y-4">
-  <div className="bg-card rounded-2xl p-6 text-white">
-    <div className="whitespace-pre-line">
-      {trip?.itinerary}
-    </div>
+  <div className="bg-card rounded-2xl border border-border/50 p-4">
+    <pre className="whitespace-pre-wrap text-white">
+      {typeof trip?.itinerary === "string"
+        ? trip.itinerary
+        : JSON.stringify(trip?.itinerary, null, 2)}
+    </pre>
   </div>
 </TabsContent>
 
