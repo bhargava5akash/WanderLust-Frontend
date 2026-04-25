@@ -59,6 +59,10 @@ console.log("TIPS:", data.trip.travel_tips);
       if (data.trip) {
     setTrip(data.trip);
 
+    setTimeout(() => {
+  saveTrip();
+}, 500);
+
     toast.success("Itinerary generated!");
 }
     } catch (err) {
